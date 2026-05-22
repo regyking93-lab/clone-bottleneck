@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Emma's Rogers Pomeranians
 
-## Getting Started
+Mobile-first landing page for Facebook/Instagram ads. Every CTA opens Messenger — no checkout, no cart.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router)
+- Tailwind CSS v4 + shadcn/ui
+- Framer Motion
+- Lucide icons
+- Sanity CMS (`/studio`)
+
+## Quick start
 
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_MESSENGER_URL` | Facebook Messenger link (e.g. `https://m.me/YourPage`) |
+| `NEXT_PUBLIC_SITE_URL` | Production URL for SEO/sitemap |
+| `SANITY_PROJECT_ID` | Sanity project ID (optional until CMS is connected) |
+| `SANITY_DATASET` | Usually `production` |
 
-## Learn More
+Without Sanity credentials, the site uses built-in fallback puppy and testimonial data.
 
-To learn more about Next.js, take a look at the following resources:
+## Sanity CMS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a project at [sanity.io](https://www.sanity.io)
+2. Add credentials to `.env.local`
+3. Visit `/studio` to manage puppies, testimonials, and site settings
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Puppy fields:** gender, personality, photo, availability, sort order.
 
-## Deploy on Vercel
+## Media
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Source folders (originals) live at the project root. Optimized copies are in `public/media/`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `hero/` — hero video + poster
+- `trust/delivery/` — handoff photos
+- `trust/videos/` — delivery videos
+- `showcase/` — additional puppy clips
+
+### Compress videos (recommended before deploy)
+
+```bash
+brew install handbrake   # or: brew install ffmpeg
+npm run compress-videos
+```
+
+Outputs go to `public/media/optimized/`. Update paths in `lib/media.ts` if you switch to optimized files.
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run compress-videos` | Compress MP4s with HandBrake/ffmpeg |
+
+## SEO
+
+- Metadata + Open Graph in `app/layout.tsx`
+- JSON-LD (`LocalBusiness` + `FAQPage`) in `components/seo/JsonLd.tsx`
+- `app/sitemap.ts`, `app/robots.ts`, dynamic `app/icon.tsx`, `app/opengraph-image.tsx`
+- Descriptive `alt` text on all images via `lib/media.ts`
+
+## Deploy
+
+Deploy to Vercel (or similar). Set env vars in the dashboard. Run video compression locally before pushing large media.

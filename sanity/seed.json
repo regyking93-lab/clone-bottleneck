@@ -1,0 +1,22 @@
+{
+  "puppies": [
+    {
+      "gender": "male",
+      "personality": "Calm teddy-face personality — affectionate, playful, and loves cuddles.",
+      "isAvailable": true,
+      "sortOrder": 1
+    },
+    {
+      "gender": "female",
+      "personality": "Sweet and gentle — curious, friendly, and wonderful with families.",
+      "isAvailable": true,
+      "sortOrder": 2
+    },
+    {
+      "gender": "male",
+      "personality": "Energetic little companion — confident, loyal, and full of charm.",
+      "isAvailable": true,
+      "sortOrder": 3
+    }
+  ]
+}
