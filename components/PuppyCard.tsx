@@ -1,16 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Dog } from "lucide-react";
-import { MessengerButton } from "@/components/MessengerButton";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { MESSENGER_URL } from "@/lib/messenger";
 import { media } from "@/lib/media";
 import type { Puppy } from "@/lib/types";
 
@@ -23,13 +23,14 @@ type PuppyCardProps = {
 export function PuppyCard({ puppy, priority = false }: PuppyCardProps) {
   const imageSrc = puppy.imageUrl || media.puppyPlaceholder;
   const genderLabel = puppy.gender === "male" ? "Male" : "Female";
+  const displayName = puppy.name?.trim() || "Our little companion";
 
   return (
     <Card className="min-w-0 overflow-hidden border-border/60 bg-card/80 shadow-sm backdrop-blur-sm">
       <AspectRatio ratio={4 / 5} className="relative overflow-hidden bg-muted">
         <Image
           src={imageSrc}
-          alt={`${genderLabel} Pomeranian puppy — ${puppy.personality.slice(0, 80)} — Emma's Rogers Pomeranians`}
+          alt={`${displayName}, ${genderLabel} Pomeranian puppy. ${puppy.personality.slice(0, 80)}`}
           fill
           priority={priority}
           className="object-cover"
@@ -38,28 +39,23 @@ export function PuppyCard({ puppy, priority = false }: PuppyCardProps) {
         {!puppy.imageUrl && <PlaceholderOverlay />}
       </AspectRatio>
       <CardHeader className="space-y-2">
-        <div className="flex flex-wrap gap-2">
-          <Badge variant="secondary" className="rounded-full bg-blush/40 text-foreground">
-            {genderLabel}
-          </Badge>
-          <Badge variant="outline" className="rounded-full border-gold/40 text-gold">
-            Available
-          </Badge>
-        </div>
-        <CardTitle className="font-heading text-xl">
-          {puppy.name || "Available Puppy"}
-        </CardTitle>
+        <Badge variant="secondary" className="w-fit rounded-full bg-blush/40 text-foreground">
+          {genderLabel}
+        </Badge>
+        <CardTitle className="font-heading text-xl">{displayName}</CardTitle>
         <CardDescription className="text-base leading-relaxed">
-          {genderLabel} — {puppy.personality}
+          {puppy.personality}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <p className="text-sm text-muted-foreground">
-          Message us for current availability
-        </p>
-      </CardContent>
-      <CardFooter>
-        <MessengerButton size="default" className="w-full" label="Ask About This Puppy" />
+      <CardFooter className="pt-0">
+        <Link
+          href={MESSENGER_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-medium text-gold underline-offset-4 hover:underline"
+        >
+          Ask about {displayName}
+        </Link>
       </CardFooter>
     </Card>
   );

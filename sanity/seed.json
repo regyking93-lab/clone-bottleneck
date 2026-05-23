@@ -1,20 +1,23 @@
 {
   "puppies": [
     {
+      "name": "Honey",
       "gender": "male",
-      "personality": "Calm teddy-face personality — affectionate, playful, and loves cuddles.",
+      "personality": "Calm teddy-face personality. Affectionate, playful, and loves cuddles.",
       "isAvailable": true,
       "sortOrder": 1
     },
     {
+      "name": "Biscuit",
       "gender": "female",
-      "personality": "Sweet and gentle — curious, friendly, and wonderful with families.",
+      "personality": "Sweet and gentle. Curious, friendly, and wonderful with families.",
       "isAvailable": true,
       "sortOrder": 2
     },
     {
+      "name": "Pebbles",
       "gender": "male",
-      "personality": "Energetic little companion — confident, loyal, and full of charm.",
+      "personality": "Energetic little companion. Confident, loyal, and full of charm.",
       "isAvailable": true,
       "sortOrder": 3
     }

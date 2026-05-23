@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Emma's Rogers Pomeranians — Home-Raised Teacup Pomeranians";
+export const alt = "Emma's Rogers Pomeranians, home-raised teacup Pomeranians";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

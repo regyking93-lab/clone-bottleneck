@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { BubbleBackground } from "@/components/BubbleBackground";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { SITE_URL } from "@/lib/messenger";
 import "./globals.css";
@@ -18,7 +19,7 @@ const dmSans = DM_Sans({
 
 const siteName = "Emma's Rogers Pomeranians";
 const description =
-  "Healthy home-raised teacup Pomeranians carefully matched with loving families. Message us on Messenger for availability, videos, and placement details.";
+  "Healthy home-raised teacup Pomeranians carefully matched with loving families. Message us on Messenger for videos and placement details.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -68,6 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${dmSans.variable} h-full scroll-smooth`}>
       <body className="min-h-full flex flex-col font-sans antialiased">
+        <BubbleBackground />
         <JsonLd />
         {children}
       </body>

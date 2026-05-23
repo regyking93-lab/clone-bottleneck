@@ -27,7 +27,7 @@ export function TrustGallery({ testimonials }: TrustGalleryProps) {
   const [activePhoto, setActivePhoto] = useState<DeliveryPhoto | null>(null);
 
   return (
-    <section id="trust" className="w-full overflow-x-hidden bg-cream px-5 py-20 md:px-8">
+    <section id="trust" className="w-full overflow-x-hidden bg-cream px-5 py-14 md:py-20 md:px-8">
       <TrustContent
         activeVideo={activeVideo}
         setActiveVideo={setActiveVideo}
@@ -56,14 +56,14 @@ function TrustContent({
     <div className="mx-auto w-full min-w-0 max-w-6xl">
       <Reveal>
         <p className="mb-2 text-center text-sm font-medium uppercase tracking-widest text-gold">
-          Trust & Proof
+          🐾 Trust & Proof
         </p>
         <h2 className="font-heading text-center text-3xl font-semibold text-charcoal md:text-4xl">
           Real Families. Real Placements.
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-center text-muted-foreground">
-          Delivery photos, happy handoffs, and vet-checked care — so you know this is
-          real, trustworthy, and safe.
+          Delivery photos, happy handoffs, and vet-checked care. Real families, real
+          placements, so you know this is safe.
         </p>
       </Reveal>
 
@@ -129,7 +129,7 @@ function TrustContent({
         </div>
       </Reveal>
 
-      <TestimonialGrid testimonials={testimonials} />
+      <TestimonialGrid testimonials={testimonials.slice(0, 3)} />
 
       <Dialog
         open={!!activePhoto}

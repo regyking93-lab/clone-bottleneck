@@ -19,7 +19,7 @@ export function Header() {
           className="hidden shrink-0 rounded-2xl md:inline-flex"
         >
           <MessageCircle className="size-4" />
-          Message Us
+          Say hi
         </Button>
       </div>
     </header>

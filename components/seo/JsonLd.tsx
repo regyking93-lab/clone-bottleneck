@@ -1,4 +1,4 @@
-import { faqItems } from "@/lib/fallback-data";
+import { faqItems } from "@/lib/site-content";
 import { SITE_URL } from "@/lib/messenger";
 
 export function JsonLd() {
@@ -7,7 +7,7 @@ export function JsonLd() {
     "@type": "LocalBusiness",
     name: "Emma's Rogers Pomeranians",
     description:
-      "Home-raised teacup Pomeranian puppies carefully matched with loving families. Message us on Messenger for availability.",
+      "Home-raised teacup Pomeranian puppies carefully matched with loving families. Message us on Messenger for videos and placement details.",
     url: SITE_URL,
     priceRange: "$$",
     areaServed: "United States",

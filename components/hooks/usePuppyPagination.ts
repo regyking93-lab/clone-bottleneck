@@ -5,24 +5,21 @@ import type { Puppy } from "@/lib/types";
 
 export const PUPPY_PAGE_SIZE = 3;
 
-export function usePuppyPagination(puppies: Puppy[], initialPage = 0) {
+export function usePuppyPagination(
+  puppies: Puppy[],
+  initialPage = 0,
+  pageSize = PUPPY_PAGE_SIZE
+) {
   const [page, setPage] = useState(initialPage);
 
-  const totalPages = Math.max(1, Math.ceil(puppies.length / PUPPY_PAGE_SIZE));
+  const totalPages = Math.max(1, Math.ceil(puppies.length / pageSize));
 
   const safePage = Math.min(page, totalPages - 1);
 
   const pagePuppies = useMemo(() => {
-    const start = safePage * PUPPY_PAGE_SIZE;
-    return puppies.slice(start, start + PUPPY_PAGE_SIZE);
-  }, [puppies, safePage]);
-
-  const rangeLabel = useMemo(() => {
-    if (puppies.length === 0) return "";
-    const start = safePage * PUPPY_PAGE_SIZE + 1;
-    const end = Math.min((safePage + 1) * PUPPY_PAGE_SIZE, puppies.length);
-    return `Showing ${start}–${end} of ${puppies.length}`;
-  }, [puppies.length, safePage]);
+    const start = safePage * pageSize;
+    return puppies.slice(start, start + pageSize);
+  }, [puppies, safePage, pageSize]);
 
   const goNext = useCallback(() => {
     setPage((p) => Math.min(p + 1, totalPages - 1));
@@ -41,7 +38,6 @@ export function usePuppyPagination(puppies: Puppy[], initialPage = 0) {
     setPage,
     totalPages,
     pagePuppies,
-    rangeLabel,
     goNext,
     goPrev,
     resetPage,

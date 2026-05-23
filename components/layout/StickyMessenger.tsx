@@ -21,7 +21,7 @@ export function StickyMessenger() {
         size="lg"
       >
         <MessageCircle className="size-5" />
-        Message Us on Messenger
+        Say hi on Messenger
       </Button>
     </motion.div>
   );

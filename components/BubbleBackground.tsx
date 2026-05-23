@@ -1,0 +1,39 @@
+"use client";
+
+const BUBBLES: { size: number; left: string; delay: number; duration: number }[] = [
+  { size: 52, left: "6%",  delay: 0,    duration: 14 },
+  { size: 26, left: "14%", delay: 2.5,  duration: 11 },
+  { size: 70, left: "23%", delay: 5.5,  duration: 17 },
+  { size: 36, left: "34%", delay: 1.5,  duration: 12 },
+  { size: 46, left: "45%", delay: 4,    duration: 13 },
+  { size: 20, left: "56%", delay: 7,    duration: 10 },
+  { size: 62, left: "66%", delay: 2,    duration: 15 },
+  { size: 30, left: "75%", delay: 6,    duration: 11 },
+  { size: 42, left: "86%", delay: 3.5,  duration: 14 },
+  { size: 56, left: "3%",  delay: 8.5,  duration: 16 },
+  { size: 18, left: "50%", delay: 9.5,  duration: 9  },
+  { size: 60, left: "40%", delay: 12,   duration: 18 },
+  { size: 33, left: "80%", delay: 1,    duration: 12 },
+  { size: 48, left: "20%", delay: 14,   duration: 13 },
+  { size: 24, left: "92%", delay: 4.5,  duration: 10 },
+];
+
+export function BubbleBackground() {
+  return (
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-[0] overflow-hidden">
+      {BUBBLES.map((b, i) => (
+        <span
+          key={i}
+          className="bubble-rise absolute bottom-[-90px] block rounded-full border-2 border-blush/70 bg-blush/30"
+          style={{
+            width: b.size,
+            height: b.size,
+            left: b.left,
+            animationDelay: `${b.delay}s`,
+            animationDuration: `${b.duration}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}

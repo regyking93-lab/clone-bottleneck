@@ -1,19 +1,32 @@
-import { fallbackTestimonials } from "@/lib/fallback-data";
+import {
+  fallbackPuppies,
+  fallbackTestimonials,
+} from "@/lib/fallback-data";
+import { buildFeaturedPuppies } from "@/lib/featured-puppies";
 import { puppyCatalog } from "@/lib/puppies-catalog";
 import { puppiesQuery, testimonialsQuery } from "@/lib/queries";
 import { isSanityConfigured, sanityClient } from "@/lib/sanity.client";
 import type { Puppy, Testimonial } from "@/lib/types";
 
+function resolvePuppySource(raw: Puppy[]): Puppy[] {
+  if (raw.length > 0) return raw;
+  if (puppyCatalog.length > 0) return puppyCatalog;
+  return fallbackPuppies;
+}
+
 export async function getPuppies(): Promise<Puppy[]> {
-  if (!isSanityConfigured || !sanityClient) {
-    return puppyCatalog.length > 0 ? puppyCatalog : [];
+  let raw: Puppy[] = [];
+
+  if (isSanityConfigured && sanityClient) {
+    try {
+      const puppies = await sanityClient.fetch<Puppy[]>(puppiesQuery);
+      raw = puppies ?? [];
+    } catch {
+      raw = [];
+    }
   }
-  try {
-    const puppies = await sanityClient.fetch<Puppy[]>(puppiesQuery);
-    return puppies?.length ? puppies : puppyCatalog;
-  } catch {
-    return puppyCatalog;
-  }
+
+  return buildFeaturedPuppies(resolvePuppySource(raw));
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {

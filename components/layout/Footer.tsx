@@ -1,25 +1,25 @@
-import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 import { SITE_URL } from "@/lib/messenger";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border/50 bg-beige/30 px-5 py-12 md:px-8">
-      <div className="mx-auto max-w-6xl">
-        <Separator className="mb-8" />
-        <div className="flex flex-col gap-4 text-center md:text-left">
-          <p className="font-heading text-lg font-semibold text-charcoal">
+    <footer className="border-t border-border/50 bg-cream px-5 py-12 md:px-8">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-4 text-center text-sm text-muted-foreground">
+        <p className="font-heading text-lg font-semibold text-charcoal">
+          Emma&apos;s Rogers <span className="text-gold">Pomeranians</span>
+        </p>
+        <p className="max-w-md">
+          Home-raised teacup Pomeranians, placed with care. All placements are handled
+          personally through Messenger. No online checkout.
+        </p>
+        <p>
+          © {year}{" "}
+          <Link href={SITE_URL} className="text-gold hover:underline">
             Emma&apos;s Rogers Pomeranians
-          </p>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            Home-raised teacup Pomeranians carefully matched with loving families.
-            All placements are handled personally through Messenger — no online checkout.
-          </p>
-          <p className="text-xs text-muted-foreground">
-            © {year} Emma&apos;s Rogers Pomeranians · {SITE_URL.replace(/^https?:\/\//, "")}
-          </p>
-        </div>
+          </Link>
+        </p>
       </div>
     </footer>
   );

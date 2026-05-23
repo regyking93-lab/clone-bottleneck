@@ -6,13 +6,13 @@ const PUPPIES_MEDIA_DIR = path.join(process.cwd(), "public/media/puppies");
 const PUPPIES_BASE_PATH = "/media/puppies";
 
 const PERSONALITY_TEMPLATES = [
-  "Calm teddy-face personality — affectionate, playful, and loves cuddles.",
-  "Sweet and gentle — curious, friendly, and wonderful with families.",
-  "Energetic little companion — confident, loyal, and full of charm.",
-  "Loves lap time and gentle play — perfect for a cozy home.",
-  "Bright, social, and eager to bond — thrives with attentive families.",
+  "Calm teddy-face personality. Affectionate, playful, and loves cuddles.",
+  "Sweet and gentle. Curious, friendly, and wonderful with families.",
+  "Energetic little companion. Confident, loyal, and full of charm.",
+  "Loves lap time and gentle play. Perfect for a cozy home.",
+  "Bright, social, and eager to bond. Thrives with attentive families.",
   "Soft coat, expressive eyes, and a loving teacup Pomeranian temperament.",
-  "Playful but easygoing — a delightful addition to a caring household.",
+  "Playful but easygoing. A delightful addition to a caring household.",
   "Affectionate cuddle buddy with a happy, healthy home-raised spirit.",
 ] as const;
 
@@ -43,7 +43,7 @@ function buildCatalogFromDisk(): Puppy[] {
     const slug = filename.replace(/\.[^.]+$/, "").replace(/\s+/g, "-").toLowerCase();
     return {
       _id: `puppy-${slug}`,
-      name: "Available Puppy",
+      name: "",
       gender: index % 2 === 0 ? "male" : "female",
       personality: PERSONALITY_TEMPLATES[index % PERSONALITY_TEMPLATES.length],
       imageUrl: puppyImagePath(filename),
