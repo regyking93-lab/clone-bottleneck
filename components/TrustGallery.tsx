@@ -120,6 +120,8 @@ function TrustContent({
               <video
                 src={video.src}
                 muted
+                autoPlay
+                loop
                 playsInline
                 preload="metadata"
                 className="h-full w-full object-cover"
