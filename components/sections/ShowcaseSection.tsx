@@ -1,6 +1,7 @@
 "use client";
 
 import { Play } from "lucide-react";
+import { ShimmerVideo } from "@/components/ui/shimmer-video";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -38,7 +39,7 @@ export function ShowcaseSection() {
               aria-label={`Play video: ${clip.alt}`}
             >
               <div className="group relative h-full w-full cursor-pointer overflow-hidden rounded-2xl bg-charcoal shadow-sm">
-                <video
+                <ShimmerVideo
                   src={clip.src}
                   muted
                   autoPlay
@@ -73,7 +74,7 @@ export function ShowcaseSection() {
                 tabIndex={0}
                 aria-label={`Play video: ${clip.alt}`}
               >
-                <video
+                <ShimmerVideo
                   src={clip.src}
                   muted
                   autoPlay
@@ -105,6 +106,8 @@ export function ShowcaseSection() {
               src={activeVideo}
               controls
               autoPlay
+              muted
+              playsInline
               className="w-full rounded-lg"
               aria-label="Puppy playing at home"
             />

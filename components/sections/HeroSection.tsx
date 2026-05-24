@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { ShimmerImage } from "@/components/ui/shimmer-image";
 import { motion } from "framer-motion";
 import { MessengerButton } from "@/components/MessengerButton";
 import { media } from "@/lib/media";
@@ -14,7 +15,7 @@ export function HeroSection() {
           src="/media/hero-wallpaper/hero-wallpaper.png"
           alt=""
           fill
-          priority
+          preload
           className="object-cover"
           style={{ opacity: 0.22 }}
           sizes="100vw"
@@ -63,11 +64,11 @@ export function HeroSection() {
           className="min-w-0 md:order-2"
         >
           <div className="relative aspect-[4/3] w-full max-w-full overflow-hidden rounded-3xl shadow-xl ring-2 ring-blush/60 sm:aspect-[4/5]">
-            <Image
+            <ShimmerImage
               src={media.hero.image}
               alt="Home-raised teacup Pomeranian puppy at Emma's Rogers Pomeranians"
               fill
-              priority
+              preload
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />

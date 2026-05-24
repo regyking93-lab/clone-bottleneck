@@ -122,6 +122,23 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@keyframes progress-bounce {
+  0% { left: -35%; }
+  100% { left: 100%; }
+}
+
+.loading-bar {
+  position: absolute;
+  top: 50%;
+  left: -35%;
+  width: 35%;
+  height: 3px;
+  transform: translateY(-50%);
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: progress-bounce 1.1s ease-in-out infinite alternate;
+}
+
 @keyframes bubble-rise {
   0% {
     transform: translateY(0) translateX(0px);

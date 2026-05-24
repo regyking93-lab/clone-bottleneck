@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { ShimmerImage } from "@/components/ui/shimmer-image";
 import Link from "next/link";
 import { Dog } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -17,10 +17,10 @@ import type { Puppy } from "@/lib/types";
 type PuppyCardProps = {
   puppy: Puppy;
   /** Preload when this card can be the LCP element (e.g. first card on page 0). */
-  priority?: boolean;
+  preload?: boolean;
 };
 
-export function PuppyCard({ puppy, priority = false }: PuppyCardProps) {
+export function PuppyCard({ puppy, preload = false }: PuppyCardProps) {
   const imageSrc = puppy.imageUrl || media.puppyPlaceholder;
   const genderLabel = puppy.gender === "male" ? "Male" : "Female";
   const displayName = puppy.name?.trim() || "Our little companion";
@@ -28,11 +28,11 @@ export function PuppyCard({ puppy, priority = false }: PuppyCardProps) {
   return (
     <Card className="min-w-0 overflow-hidden border-border/60 bg-card/80 shadow-sm backdrop-blur-sm h-full pt-0">
       <AspectRatio ratio={4 / 5} className="relative overflow-hidden bg-muted">
-        <Image
+        <ShimmerImage
           src={imageSrc}
           alt={`${displayName}, ${genderLabel} Pomeranian puppy. ${puppy.personality.slice(0, 80)}`}
           fill
-          priority={priority}
+          preload={preload}
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 33vw"
         />
