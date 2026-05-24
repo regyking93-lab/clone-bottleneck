@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Variable | Description |
 |----------|-------------|
-| `NEXT_PUBLIC_MESSENGER_URL` | Facebook Messenger link (e.g. `https://m.me/YourPage`) |
+| `NEXT_PUBLIC_MESSENGER_URL` | Facebook Messenger link (e.g. `https://m.me/RealEmmaRodgers`) |
 | `NEXT_PUBLIC_SITE_URL` | Production URL for SEO/sitemap |
 | `SANITY_PROJECT_ID` | Sanity project ID (optional until CMS is connected) |
 | `SANITY_DATASET` | Usually `production` |

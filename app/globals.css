@@ -172,3 +172,7 @@
     @apply font-heading;
   }
 }
+
+* {
+  outline: 1px solid red;
+}
