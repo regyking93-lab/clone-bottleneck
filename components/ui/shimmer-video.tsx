@@ -10,24 +10,36 @@ export function ShimmerVideo(props: VideoHTMLAttributes<HTMLVideoElement>) {
     const video = videoRef.current;
     if (!video) return;
 
-    if (video.readyState >= 3) {
+    let dismissed = false;
+    const dismiss = () => {
+      if (dismissed) return;
+      dismissed = true;
       setLoaded(true);
-    } else {
-      const done = () => setLoaded(true);
-      video.addEventListener("canplay", done, { once: true });
-      video.addEventListener("loadeddata", done, { once: true });
+    };
+
+    if (video.readyState >= 2) {
+      dismiss();
+      return () => { dismissed = true; };
     }
 
-    if (props.autoPlay) {
-      video.play().catch(() => {});
-    }
+    const events = ["loadeddata", "canplay", "playing"] as const;
+    events.forEach(e => video.addEventListener(e, dismiss, { once: true }));
+
+    if (props.autoPlay) video.play().catch(() => {});
+
+    return () => {
+      dismissed = true;
+      events.forEach(e => video.removeEventListener(e, dismiss));
+    };
   }, [props.autoPlay]);
 
   return (
     <>
       {!loaded && (
-        <div className="absolute inset-0 z-10 overflow-hidden" aria-hidden>
-          <span className="loading-bar bg-white/50" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center" aria-hidden>
+          <div className="relative h-1 w-3/5 overflow-hidden rounded-full bg-white/20">
+            <span className="loading-bar bg-white/60" />
+          </div>
         </div>
       )}
       <video ref={videoRef} {...props} />

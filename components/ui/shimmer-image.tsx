@@ -15,15 +15,17 @@ export function ShimmerImage(props: ImageProps) {
       return;
     }
     const done = () => setLoaded(true);
-    img.addEventListener("load", done);
+    img.addEventListener("load", done, { once: true });
     return () => img.removeEventListener("load", done);
   }, []);
 
   return (
     <>
       {!loaded && (
-        <div className="absolute inset-0 z-10 overflow-hidden bg-[#ede8e0]" aria-hidden>
-          <span className="loading-bar bg-[#c9a962]" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#ede8e0]" aria-hidden>
+          <div className="relative h-1 w-3/5 overflow-hidden rounded-full bg-[#d9d0c4]">
+            <span className="loading-bar bg-[#c9a962]" />
+          </div>
         </div>
       )}
       <Image {...props} ref={imgRef} />
