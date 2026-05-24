@@ -26,7 +26,7 @@ export function PuppyCard({ puppy, priority = false }: PuppyCardProps) {
   const displayName = puppy.name?.trim() || "Our little companion";
 
   return (
-    <Card className="min-w-0 overflow-hidden border-border/60 bg-card/80 shadow-sm backdrop-blur-sm">
+    <Card className="min-w-0 overflow-hidden border-border/60 bg-card/80 shadow-sm backdrop-blur-sm h-full">
       <AspectRatio ratio={4 / 5} className="relative overflow-hidden bg-muted">
         <Image
           src={imageSrc}
@@ -38,7 +38,7 @@ export function PuppyCard({ puppy, priority = false }: PuppyCardProps) {
         />
         {!puppy.imageUrl && <PlaceholderOverlay />}
       </AspectRatio>
-      <CardHeader className="space-y-2">
+      <CardHeader className="space-y-2 flex flex-col flex-grow">
         <Badge variant="secondary" className="w-fit rounded-full bg-blush/40 text-foreground">
           {genderLabel}
         </Badge>

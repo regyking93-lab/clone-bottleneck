@@ -11,7 +11,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { media } from "@/lib/media";
 import type { Testimonial } from "@/lib/types";
@@ -68,13 +67,13 @@ function TrustContent({
       </Reveal>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-3">
-        <Reveal>
+        <Reveal className="w-full h-full">
           <TrustPill icon={Shield} title="Vet checked" text="Health prep before every placement" />
         </Reveal>
-        <Reveal delay={0.05}>
+        <Reveal delay={0.05} className="w-full h-full">
           <TrustPill icon={Heart} title="Family matched" text="Intentional pairing, not mass sales" />
         </Reveal>
-        <Reveal delay={0.1}>
+        <Reveal delay={0.1} className="w-full h-full">
           <TrustPill icon={Play} title="Videos shared" text="See your puppy before you commit" />
         </Reveal>
       </div>
@@ -83,9 +82,9 @@ function TrustContent({
         <h3 className="mb-4 font-heading text-xl font-medium text-charcoal">Delivery & handoffs</h3>
         <div className="grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {media.trust.delivery.map((photo) => (
-            <Card
+            <div
               key={photo.src}
-              className="group cursor-pointer overflow-hidden p-0"
+              className="group relative aspect-square w-full cursor-pointer overflow-hidden rounded-xl"
               onClick={() => setActivePhoto(photo)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
@@ -97,34 +96,41 @@ function TrustContent({
               tabIndex={0}
               aria-label={`View full size: ${photo.alt}`}
             >
-              <AspectRatio ratio={1} className="relative">
-                <Image src={photo.src} alt={photo.alt} fill className="object-cover" sizes="25vw" />
-                <div className="absolute inset-0 flex items-center justify-center bg-charcoal/30 transition group-hover:bg-charcoal/40">
-                  <ZoomIn className="size-8 text-white" aria-hidden />
-                </div>
-              </AspectRatio>
-            </Card>
+              <Image src={photo.src} alt={photo.alt} fill className="object-cover" sizes="(max-width: 640px) 50vw, 25vw" />
+              <div className="absolute inset-0 flex items-center justify-center bg-charcoal/30 transition group-hover:bg-charcoal/40">
+                <ZoomIn className="size-8 text-white" aria-hidden />
+              </div>
+            </div>
           ))}
           {media.trust.videos.map((video) => (
-            <Card
+            <div
               key={video.src}
-              className="group cursor-pointer overflow-hidden p-0"
+              className="group relative aspect-square w-full cursor-pointer overflow-hidden rounded-xl bg-charcoal"
               onClick={() => setActiveVideo(video.src)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setActiveVideo(video.src);
+                }
+              }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Play video: ${video.alt}`}
             >
-              <AspectRatio ratio={1} className="relative bg-charcoal">
-                <video
-                  src={video.src}
-                  muted
-                  playsInline
-                  preload="metadata"
-                  className="h-full w-full object-cover"
-                  aria-label={video.alt}
-                />
-                <div className="absolute inset-0 flex items-center justify-center bg-charcoal/30 transition group-hover:bg-charcoal/40">
-                  <Play className="size-10 text-white" fill="white" />
-                </div>
-              </AspectRatio>
-            </Card>
+              <video
+                src={video.src}
+                muted
+                autoPlay
+                loop
+                playsInline
+                preload="metadata"
+                className="h-full w-full object-cover"
+                aria-label={video.alt}
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-charcoal/30 transition group-hover:bg-charcoal/40">
+                <Play className="size-10 text-white" fill="white" />
+              </div>
+            </div>
           ))}
         </div>
       </Reveal>
@@ -181,7 +187,7 @@ function TestimonialGrid({ testimonials }: { testimonials: Testimonial[] }) {
   return (
     <div className="mt-12 grid gap-6 md:grid-cols-3">
       {testimonials.map((t, i) => (
-        <Reveal key={t._id} delay={i * 0.08}>
+        <Reveal key={t._id} delay={i * 0.08} className="w-full h-full">
           <Card className="h-full border-border/60 bg-white/80">
             <CardHeader>
               <CardDescription className="text-base leading-relaxed text-foreground italic">
@@ -211,7 +217,7 @@ function TrustPill({
   text: string;
 }) {
   return (
-    <Card className="border-border/50 bg-white/70 text-center">
+    <Card className="h-full border-border/50 bg-white/70 text-center">
       <CardContent className="flex flex-col items-center gap-2 pt-6">
         <Icon className="size-8 text-gold" />
         <p className="font-medium text-charcoal">{title}</p>

@@ -96,6 +96,62 @@ function PhotoCard({ item, onClick }: { item: MediaItem; onClick?: () => void })
   );
 }
 
+function MobileCard({ item, onClick }: { item: MediaItem; onClick?: () => void }) {
+  const isVideo = item.kind === "video";
+  const label = item.kind === "photo" ? item.label : null;
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.015 }}
+      transition={{ duration: 0.25 }}
+      className={`group relative h-full w-full overflow-hidden rounded-2xl shadow-sm ring-1 ring-blush/30 ${isVideo || onClick ? "cursor-pointer" : ""}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      aria-label={onClick ? `Play video: ${item.alt}` : undefined}
+      onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } } : undefined}
+    >
+      {isVideo ? (
+        <div className="relative h-full bg-charcoal">
+          <video
+            src={item.src}
+            muted
+            autoPlay
+            loop
+            playsInline
+            preload="metadata"
+            className="h-full w-full object-cover opacity-90 transition group-hover:opacity-75"
+            aria-label={item.alt}
+          />
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-charcoal/10 transition group-hover:bg-charcoal/25">
+            <div className="rounded-full bg-white/80 p-3 shadow-md backdrop-blur-sm">
+              <Play className="size-5 text-charcoal" fill="currentColor" aria-hidden />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="relative h-full bg-beige">
+          <Image
+            src={(item as Extract<MediaItem, { kind: "photo" }>).src}
+            alt={item.alt}
+            fill
+            className="object-cover transition duration-300 group-hover:scale-[1.03]"
+            sizes="85vw"
+          />
+        </div>
+      )}
+
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-charcoal/40 to-transparent" />
+
+      {label && (
+        <span className="absolute bottom-3 left-3 rounded-full bg-white/80 px-2.5 py-1 text-xs font-medium text-charcoal/80 backdrop-blur-sm shadow-sm">
+          {label}
+        </span>
+      )}
+    </motion.div>
+  );
+}
+
 export function HomeLifeSection() {
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [col1, col2, col3] = chunk3(FEED);
@@ -117,10 +173,10 @@ export function HomeLifeSection() {
         </Reveal>
 
         {/* Mobile: horizontal swipe carousel */}
-        <div className="mt-10 flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory md:hidden">
+        <div className="mt-10 flex h-64 gap-4 overflow-x-auto snap-x snap-mandatory md:hidden">
           {FEED.map((item, i) => (
-            <div key={i} className="min-w-[75%] shrink-0 snap-center sm:min-w-[55%]">
-              <PhotoCard
+            <div key={i} className="h-full w-[75%] shrink-0 snap-center sm:w-[55%]">
+              <MobileCard
                 item={item}
                 onClick={item.kind === "video" ? () => setActiveVideo(item.src) : undefined}
               />
