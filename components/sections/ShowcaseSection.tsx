@@ -106,7 +106,6 @@ export function ShowcaseSection() {
               src={activeVideo}
               controls
               autoPlay
-              muted
               playsInline
               className="w-full rounded-lg"
               aria-label="Puppy playing at home"

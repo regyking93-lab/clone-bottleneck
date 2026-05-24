@@ -216,7 +216,6 @@ export function HomeLifeSection() {
               src={activeVideo}
               controls
               autoPlay
-              muted
               playsInline
               className="w-full rounded-lg"
               aria-label="Puppy moment at home"
