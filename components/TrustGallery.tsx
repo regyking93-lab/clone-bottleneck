@@ -175,7 +175,6 @@ function TrustContent({
               src={activeVideo}
               controls
               autoPlay
-              muted
               playsInline
               className="w-full rounded-lg"
               aria-label="Pomeranian puppy delivery video"
