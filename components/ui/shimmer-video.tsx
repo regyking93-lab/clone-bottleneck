@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, type VideoHTMLAttributes } from "react";
 
-export function ShimmerVideo(props: VideoHTMLAttributes<HTMLVideoElement>) {
+export function ShimmerVideo({ autoPlay, ...props }: VideoHTMLAttributes<HTMLVideoElement>) {
   const [loaded, setLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -22,16 +22,18 @@ export function ShimmerVideo(props: VideoHTMLAttributes<HTMLVideoElement>) {
       return () => { dismissed = true; };
     }
 
-    const events = ["loadeddata", "canplay", "playing"] as const;
+    // timeupdate fires as soon as currentTime advances — most reliable signal
+    // that frames are actually rendering, catches what canplay/playing can miss
+    const events = ["timeupdate", "canplay", "playing", "loadeddata"] as const;
     events.forEach(e => video.addEventListener(e, dismiss, { once: true }));
 
-    if (props.autoPlay) video.play().catch(() => {});
+    if (autoPlay) video.play().catch(() => {});
 
     return () => {
       dismissed = true;
       events.forEach(e => video.removeEventListener(e, dismiss));
     };
-  }, [props.autoPlay]);
+  }, [autoPlay]);
 
   return (
     <>
@@ -42,7 +44,7 @@ export function ShimmerVideo(props: VideoHTMLAttributes<HTMLVideoElement>) {
           </div>
         </div>
       )}
-      <video ref={videoRef} {...props} />
+      <video ref={videoRef} autoPlay={autoPlay} {...props} />
     </>
   );
 }

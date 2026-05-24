@@ -3,20 +3,14 @@
 import { useState, useEffect, useRef } from "react";
 import Image, { type ImageProps } from "next/image";
 
-export function ShimmerImage(props: ImageProps) {
+export function ShimmerImage({ onLoad, ...props }: ImageProps) {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
+  // Dismiss immediately if image is already cached on mount
   useEffect(() => {
     const img = imgRef.current;
-    if (!img) return;
-    if (img.complete && img.naturalWidth > 0) {
-      setLoaded(true);
-      return;
-    }
-    const done = () => setLoaded(true);
-    img.addEventListener("load", done, { once: true });
-    return () => img.removeEventListener("load", done);
+    if (img?.complete && img.naturalWidth > 0) setLoaded(true);
   }, []);
 
   return (
@@ -28,7 +22,14 @@ export function ShimmerImage(props: ImageProps) {
           </div>
         </div>
       )}
-      <Image {...props} ref={imgRef} />
+      <Image
+        {...props}
+        ref={imgRef}
+        onLoad={(e) => {
+          setLoaded(true);
+          onLoad?.(e);
+        }}
+      />
     </>
   );
 }
