@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { ShimmerImage } from "@/components/ui/shimmer-image";
+import { ShimmerVideo } from "@/components/ui/shimmer-video";
 import { useState, type ComponentType } from "react";
 import { Play, Shield, Heart, ZoomIn } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
@@ -96,7 +98,7 @@ function TrustContent({
               tabIndex={0}
               aria-label={`View full size: ${photo.alt}`}
             >
-              <Image src={photo.src} alt={photo.alt} fill className="object-cover" sizes="(max-width: 640px) 50vw, 25vw" />
+              <ShimmerImage src={photo.src} alt={photo.alt} fill className="object-cover" sizes="(max-width: 640px) 50vw, 25vw" />
               <div className="absolute inset-0 flex items-center justify-center bg-charcoal/30 transition group-hover:bg-charcoal/40">
                 <ZoomIn className="size-8 text-white" aria-hidden />
               </div>
@@ -117,7 +119,7 @@ function TrustContent({
               tabIndex={0}
               aria-label={`Play video: ${video.alt}`}
             >
-              <video
+              <ShimmerVideo
                 src={video.src}
                 muted
                 autoPlay
@@ -173,6 +175,8 @@ function TrustContent({
               src={activeVideo}
               controls
               autoPlay
+              muted
+              playsInline
               className="w-full rounded-lg"
               aria-label="Pomeranian puppy delivery video"
             />
