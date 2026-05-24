@@ -3,8 +3,6 @@
 import { Play } from "lucide-react";
 import { useState } from "react";
 import { Reveal } from "@/components/motion/Reveal";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { media } from "@/lib/media";
 
@@ -61,9 +59,9 @@ export function ShowcaseSection() {
         {/* Desktop: 3-column grid */}
         <div className="mt-10 hidden gap-4 md:grid md:grid-cols-3 md:items-start">
           {media.showcase.map((clip, i) => (
-            <Reveal key={clip.src} delay={i * 0.06}>
-              <Card
-                className="group cursor-pointer overflow-hidden p-0"
+            <Reveal key={clip.src} delay={i * 0.06} className="w-full">
+              <div
+                className="group relative aspect-[4/5] w-full cursor-pointer overflow-hidden rounded-xl bg-charcoal shadow-sm"
                 onClick={() => setActiveVideo(clip.src)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
@@ -75,22 +73,20 @@ export function ShowcaseSection() {
                 tabIndex={0}
                 aria-label={`Play video: ${clip.alt}`}
               >
-                <AspectRatio ratio={4 / 5} className="relative bg-charcoal">
-                  <video
-                    src={clip.src}
-                    muted
-                    autoPlay
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="h-full w-full object-cover"
-                    aria-label={clip.alt}
-                  />
-                  <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-charcoal/20 transition group-hover:bg-charcoal/30">
-                    <Play className="size-10 text-white/90" fill="white" aria-hidden />
-                  </div>
-                </AspectRatio>
-              </Card>
+                <video
+                  src={clip.src}
+                  muted
+                  autoPlay
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="h-full w-full object-cover"
+                  aria-label={clip.alt}
+                />
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-charcoal/20 transition group-hover:bg-charcoal/30">
+                  <Play className="size-10 text-white/90" fill="white" aria-hidden />
+                </div>
+              </div>
             </Reveal>
           ))}
         </div>
