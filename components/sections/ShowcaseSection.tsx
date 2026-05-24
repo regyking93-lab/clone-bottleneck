@@ -27,9 +27,41 @@ export function ShowcaseSection() {
           </p>
         </Reveal>
 
-        <div className="mt-10 flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory md:grid md:grid-cols-3 md:overflow-visible">
+        {/* Mobile: fixed-height carousel */}
+        <div className="mt-10 flex h-72 gap-4 overflow-x-auto snap-x snap-mandatory md:hidden">
+          {media.showcase.map((clip) => (
+            <div
+              key={clip.src}
+              className="h-full w-[85%] shrink-0 snap-center sm:w-[70%]"
+              onClick={() => setActiveVideo(clip.src)}
+              onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActiveVideo(clip.src); } }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Play video: ${clip.alt}`}
+            >
+              <div className="group relative h-full w-full cursor-pointer overflow-hidden rounded-2xl bg-charcoal shadow-sm">
+                <video
+                  src={clip.src}
+                  muted
+                  autoPlay
+                  loop
+                  playsInline
+                  preload="metadata"
+                  className="h-full w-full object-cover"
+                  aria-label={clip.alt}
+                />
+                <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-charcoal/20 transition group-hover:bg-charcoal/30">
+                  <Play className="size-10 text-white/90" fill="white" aria-hidden />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop: 3-column grid */}
+        <div className="mt-10 hidden gap-4 md:grid md:grid-cols-3 md:items-start">
           {media.showcase.map((clip, i) => (
-            <Reveal key={clip.src} delay={i * 0.06} className="min-w-[85%] shrink-0 snap-center sm:min-w-[70%] md:min-w-0">
+            <Reveal key={clip.src} delay={i * 0.06}>
               <Card
                 className="group cursor-pointer overflow-hidden p-0"
                 onClick={() => setActiveVideo(clip.src)}
