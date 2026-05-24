@@ -29,7 +29,7 @@ export function PuppiesCarousel({ puppies, className }: PuppiesCarouselProps) {
       >
         {puppies.map((puppy, index) => (
           <div key={puppy._id} className="min-w-[82%] shrink-0 snap-center sm:min-w-[58%] md:min-w-0">
-            <PuppyCard puppy={puppy} priority={index === 0} />
+            <PuppyCard puppy={puppy} preload={index === 0} />
           </div>
         ))}
       </motion.div>
