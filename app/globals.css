@@ -122,6 +122,24 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@keyframes shimmer-sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.shimmer-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.62) 50%,
+    transparent 100%
+  );
+  animation: shimmer-sweep 1.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
 @keyframes bubble-rise {
   0% {
     transform: translateY(0) translateX(0px);
