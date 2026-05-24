@@ -1,6 +1,7 @@
 "use client";
 
-import Image from "next/image";
+import { ShimmerImage } from "@/components/ui/shimmer-image";
+import { ShimmerVideo } from "@/components/ui/shimmer-video";
 import { useState } from "react";
 import { Play } from "lucide-react";
 import { motion } from "framer-motion";
@@ -56,7 +57,7 @@ function PhotoCard({ item, onClick }: { item: MediaItem; onClick?: () => void })
     >
       {isVideo ? (
         <div className="relative aspect-[3/4] bg-charcoal">
-          <video
+          <ShimmerVideo
             src={item.src}
             muted
             autoPlay
@@ -74,7 +75,7 @@ function PhotoCard({ item, onClick }: { item: MediaItem; onClick?: () => void })
         </div>
       ) : (
         <div className="relative aspect-[3/4] bg-beige">
-          <Image
+          <ShimmerImage
             src={(item as Extract<MediaItem, { kind: "photo" }>).src}
             alt={item.alt}
             fill
@@ -113,7 +114,7 @@ function MobileCard({ item, onClick }: { item: MediaItem; onClick?: () => void }
     >
       {isVideo ? (
         <div className="relative h-full bg-charcoal">
-          <video
+          <ShimmerVideo
             src={item.src}
             muted
             autoPlay
@@ -131,7 +132,7 @@ function MobileCard({ item, onClick }: { item: MediaItem; onClick?: () => void }
         </div>
       ) : (
         <div className="relative h-full bg-beige">
-          <Image
+          <ShimmerImage
             src={(item as Extract<MediaItem, { kind: "photo" }>).src}
             alt={item.alt}
             fill
@@ -215,6 +216,8 @@ export function HomeLifeSection() {
               src={activeVideo}
               controls
               autoPlay
+              muted
+              playsInline
               className="w-full rounded-lg"
               aria-label="Puppy moment at home"
             />
