@@ -173,9 +173,9 @@ export function HomeLifeSection() {
         </Reveal>
 
         {/* Mobile: horizontal swipe carousel */}
-        <div className="mt-10 flex gap-4 overflow-x-auto snap-x snap-mandatory md:hidden">
+        <div className="mt-10 flex h-64 gap-4 overflow-x-auto snap-x snap-mandatory md:hidden">
           {FEED.map((item, i) => (
-            <div key={i} className="aspect-[3/4] min-w-[75%] shrink-0 snap-center sm:min-w-[55%]">
+            <div key={i} className="h-full w-[75%] shrink-0 snap-center sm:w-[55%]">
               <MobileCard
                 item={item}
                 onClick={item.kind === "video" ? () => setActiveVideo(item.src) : undefined}
