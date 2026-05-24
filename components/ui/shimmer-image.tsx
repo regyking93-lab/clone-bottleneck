@@ -10,7 +10,7 @@ export function ShimmerImage(props: ImageProps) {
     <>
       {!loaded && (
         <div className="absolute inset-0 z-10 overflow-hidden bg-[#ede8e0]" aria-hidden>
-          <span className="shimmer-sweep" />
+          <span className="loading-bar bg-[#c9a962]" />
         </div>
       )}
       <Image {...props} onLoad={() => setLoaded(true)} />

@@ -8,11 +8,11 @@ export function ShimmerVideo(props: VideoHTMLAttributes<HTMLVideoElement>) {
   return (
     <>
       {!loaded && (
-        <div className="absolute inset-0 z-10 overflow-hidden bg-[#ede8e0]" aria-hidden>
-          <span className="shimmer-sweep" />
+        <div className="absolute inset-0 z-10 overflow-hidden" aria-hidden>
+          <span className="loading-bar bg-white/60" />
         </div>
       )}
-      <video {...props} onLoadedData={() => setLoaded(true)} />
+      <video {...props} onCanPlay={() => setLoaded(true)} />
     </>
   );
 }

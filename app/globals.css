@@ -122,22 +122,21 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-@keyframes shimmer-sweep {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+@keyframes progress-bounce {
+  0% { left: -35%; }
+  100% { left: 100%; }
 }
 
-.shimmer-sweep {
+.loading-bar {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.62) 50%,
-    transparent 100%
-  );
-  animation: shimmer-sweep 1.4s ease-in-out infinite;
+  top: 50%;
+  left: -35%;
+  width: 35%;
+  height: 3px;
+  transform: translateY(-50%);
+  border-radius: 9999px;
   pointer-events: none;
+  animation: progress-bounce 1.1s ease-in-out infinite alternate;
 }
 
 @keyframes bubble-rise {
