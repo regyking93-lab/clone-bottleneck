@@ -26,7 +26,7 @@ export function PuppyCard({ puppy, priority = false }: PuppyCardProps) {
   const displayName = puppy.name?.trim() || "Our little companion";
 
   return (
-    <Card className="min-w-0 overflow-hidden border-border/60 bg-card/80 shadow-sm backdrop-blur-sm h-full">
+    <Card className="min-w-0 overflow-hidden border-border/60 bg-card/80 shadow-sm backdrop-blur-sm h-full pt-0">
       <AspectRatio ratio={4 / 5} className="relative overflow-hidden bg-muted">
         <Image
           src={imageSrc}
