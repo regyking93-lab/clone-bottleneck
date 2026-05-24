@@ -47,7 +47,7 @@ function PhotoCard({ item, onClick }: { item: MediaItem; onClick?: () => void })
     <motion.div
       whileHover={{ scale: 1.015 }}
       transition={{ duration: 0.25 }}
-      className={`group relative w-full overflow-hidden rounded-2xl shadow-sm ring-1 ring-blush/30 ${isVideo || onClick ? "cursor-pointer" : ""}`}
+      className={`group relative h-full w-full overflow-hidden rounded-2xl shadow-sm ring-1 ring-blush/30 ${isVideo || onClick ? "cursor-pointer" : ""}`}
       onClick={onClick}
       role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
@@ -55,7 +55,7 @@ function PhotoCard({ item, onClick }: { item: MediaItem; onClick?: () => void })
       onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onClick(); } } : undefined}
     >
       {isVideo ? (
-        <div className="relative aspect-[3/4] bg-charcoal">
+        <div className="relative h-full bg-charcoal">
           <video
             src={item.src}
             muted
@@ -73,7 +73,7 @@ function PhotoCard({ item, onClick }: { item: MediaItem; onClick?: () => void })
           </div>
         </div>
       ) : (
-        <div className="relative aspect-[3/4] bg-beige">
+        <div className="relative h-full bg-beige">
           <Image
             src={(item as Extract<MediaItem, { kind: "photo" }>).src}
             alt={item.alt}
@@ -117,9 +117,9 @@ export function HomeLifeSection() {
         </Reveal>
 
         {/* Mobile: horizontal swipe carousel */}
-        <div className="mt-10 flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory md:hidden">
+        <div className="mt-10 flex gap-4 overflow-x-auto snap-x snap-mandatory md:hidden">
           {FEED.map((item, i) => (
-            <div key={i} className="min-w-[75%] shrink-0 snap-center sm:min-w-[55%]">
+            <div key={i} className="aspect-[3/4] min-w-[75%] shrink-0 snap-center sm:min-w-[55%]">
               <PhotoCard
                 item={item}
                 onClick={item.kind === "video" ? () => setActiveVideo(item.src) : undefined}
