@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "CMS Studio | Emma's Rogers Pomeranians",
+  title: "CMS Studio | Emma's Rodgers Pomeranians",
   robots: { index: false, follow: false },
 };
 

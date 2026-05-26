@@ -35,7 +35,7 @@ export function HeroSection() {
         >
           <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-gold">
             <span>🧸</span>
-            <span>Emma&apos;s Rogers Pomeranians</span>
+            <span>Emma&apos;s Rodgers Pomeranians</span>
           </p>
           <h1 className="font-heading break-words text-4xl leading-tight font-semibold md:text-5xl lg:text-[3.25rem]">
             <span className="text-charcoal/90" style={{ textShadow: "0 1px 18px rgba(232,196,196,0.45)" }}>Little Faces.</span>
@@ -71,7 +71,7 @@ export function HeroSection() {
               playsInline
               preload="auto"
               className="h-full w-full object-cover"
-              aria-label="Home-raised teacup Pomeranian puppy at Emma's Rogers Pomeranians"
+              aria-label="Home-raised teacup Pomeranian puppy at Emma's Rodgers Pomeranians"
             />
             {/* Floating trust badge */}
             <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/85 px-3 py-1.5 shadow-md backdrop-blur-sm">
