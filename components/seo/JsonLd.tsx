@@ -5,7 +5,7 @@ export function JsonLd() {
   const organization = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Emma's Rogers Pomeranians",
+    name: "Emma's Rodgers Pomeranians",
     description:
       "Home-raised teacup Pomeranian puppies carefully matched with loving families. Message us on Messenger for videos and placement details.",
     url: SITE_URL,

@@ -19,7 +19,7 @@ export function AboutSection() {
             <CardContent className="space-y-6 pt-8 text-center md:text-left">
               <Heart className="mx-auto size-10 text-blush md:mx-0" aria-hidden />
               <p className="text-lg leading-relaxed text-muted-foreground">
-                At Emma&apos;s Rogers Pomeranians, we don&apos;t just place puppies. We match
+                At Emma&apos;s Rodgers Pomeranians, we don&apos;t just place puppies. We match
                 hearts. Each teacup Pomeranian is raised in a warm home with individual
                 attention, socialization, and care from day one.
               </p>

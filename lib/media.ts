@@ -9,11 +9,11 @@ export const media = {
     delivery: [
       {
         src: "/media/trust/delivery/89cc6aed-9224-40d5-9e6c-558f153298bd.JPG",
-        alt: "Happy family receiving their Pomeranian puppy delivery at Emma's Rogers Pomeranians",
+        alt: "Happy family receiving their Pomeranian puppy delivery at Emma's Rodgers Pomeranians",
       },
       {
         src: "/media/trust/delivery/f913a8f5-cd9d-4257-bc4e-efd976ef7777.JPG",
-        alt: "Pomeranian puppy handoff confirmation photo with new family at Emma's Rogers Pomeranians",
+        alt: "Pomeranian puppy handoff confirmation photo with new family at Emma's Rodgers Pomeranians",
       },
     ],
     videos: [

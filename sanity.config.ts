@@ -7,7 +7,7 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || process.env.SANITY_DAT
 
 export default defineConfig({
   name: "emmas-rogers-pomeranians",
-  title: "Emma's Rogers Pomeranians",
+  title: "Emma's Rodgers Pomeranians",
   projectId: projectId || "placeholder",
   dataset,
   plugins: [structureTool()],

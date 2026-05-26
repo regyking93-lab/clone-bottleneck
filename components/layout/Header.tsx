@@ -11,7 +11,7 @@ export function Header() {
           href="/"
           className="min-w-0 shrink font-heading text-base leading-tight font-semibold text-charcoal sm:text-lg md:text-xl"
         >
-          Emma&apos;s Rogers <span className="text-gold">Pomeranians</span>
+          Emma&apos;s Rodgers <span className="text-gold">Pomeranians</span>
         </Link>
         <Button
           nativeButton={false}

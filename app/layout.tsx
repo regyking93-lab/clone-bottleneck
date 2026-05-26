@@ -17,7 +17,7 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteName = "Emma's Rogers Pomeranians";
+const siteName = "Emma's Rodgers Pomeranians";
 const description =
   "Healthy home-raised teacup Pomeranians carefully matched with loving families. Message us on Messenger for videos and placement details.";
 

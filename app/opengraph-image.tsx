@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Emma's Rogers Pomeranians, home-raised teacup Pomeranians";
+export const alt = "Emma's Rodgers Pomeranians, home-raised teacup Pomeranians";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -28,7 +28,7 @@ export default function OgImage() {
             lineHeight: 1.2,
           }}
         >
-          {`Emma's Rogers Pomeranians`}
+          {`Emma's Rodgers Pomeranians`}
         </div>
         <div
           style={{
