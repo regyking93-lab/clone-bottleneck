@@ -1,6 +1,7 @@
 import { AboutSection } from "@/components/sections/AboutSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { QuoteCardsSection } from "@/components/sections/QuoteCardsSection";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { PuppiesSection } from "@/components/sections/PuppiesSection";
 import { HomeLifeSection } from "@/components/sections/HomeLifeSection";
@@ -23,6 +24,7 @@ export default async function HomePage() {
       <Header />
       <main className="w-full min-w-0 overflow-x-hidden pb-24 md:pb-0">
         <HeroSection />
+        <QuoteCardsSection />
         <PuppiesSection puppies={puppies} />
         <HomeLifeSection />
         <TrustGallery testimonials={testimonials} />

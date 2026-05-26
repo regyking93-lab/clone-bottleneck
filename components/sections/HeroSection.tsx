@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { ShimmerImage } from "@/components/ui/shimmer-image";
+import { ShimmerVideo } from "@/components/ui/shimmer-video";
 import { motion } from "framer-motion";
 import { MessengerButton } from "@/components/MessengerButton";
-import { media } from "@/lib/media";
 
 export function HeroSection() {
   return (
@@ -64,13 +63,15 @@ export function HeroSection() {
           className="min-w-0 md:order-2"
         >
           <div className="relative aspect-[4/3] w-full max-w-full overflow-hidden rounded-3xl shadow-xl ring-2 ring-blush/60 sm:aspect-[4/5]">
-            <ShimmerImage
-              src={media.hero.image}
-              alt="Home-raised teacup Pomeranian puppy at Emma's Rogers Pomeranians"
-              fill
-              preload
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
+            <ShimmerVideo
+              src="/media/hero/new-hero.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="h-full w-full object-cover"
+              aria-label="Home-raised teacup Pomeranian puppy at Emma's Rogers Pomeranians"
             />
             {/* Floating trust badge */}
             <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/85 px-3 py-1.5 shadow-md backdrop-blur-sm">
