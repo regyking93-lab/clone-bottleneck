@@ -36,6 +36,7 @@ export default async function HomePage() {
       </main>
       <Footer />
       <StickyMessenger />
+      <section className="hidden" />
     </div>
   );
 }
