@@ -3,7 +3,7 @@ name: Deploy Next.js to DomainKing
 on:
   push:
     branches:
-      - main  # Change this if your primary branch is named 'master'
+      - main  # Triggers automatically as soon as your PR merges into main
 
 jobs:
   build-and-deploy:
@@ -16,14 +16,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Matches the node version you use locally
+          node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
       - name: Build Next.js Static Site
-        run: npm run build
+        # NEXT_FONT_GOOGLE_MOCK_FETCH=true ensures Google Fonts don't throw network errors during the GitHub build environment
+        run: NEXT_FONT_GOOGLE_MOCK_FETCH=true npm run build
 
       - name: Sync Files to DomainKing via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -31,5 +32,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/  # Next.js exports static files into this directory
-          server-dir: public_html/ # Target folder in cPanel (adjust if using a subdomain)
+          local-dir: ./out/  # Next.js exports static build files here
+          server-dir: public_html/ # Target folder in your DomainKing cPanel
