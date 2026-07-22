@@ -1,12 +1,9 @@
-name: Build and Deploy Static Next.js App
+name: Compile and FTP Deploy Next.js
 
 on:
   push:
     branches:
       - main
-
-permissions:
-  contents: write
 
 jobs:
   build-and-deploy:
@@ -27,16 +24,12 @@ jobs:
       - name: Build Static HTML Files
         run: npm run build
 
-      - name: Deploy Compiled Files to gh-deploy Branch
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Files directly to public_html via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          folder: out            
-          branch: gh-deploy      
-          clean: true            
-
-      - name: Trigger DirectAdmin Git Pull
-        run: |
-          curl -X POST "https://da16.host-ww.net:2222/api/git/user/emmarodg/uuid/512bca2fe42f2df19e063b7636eaa602/webhook" \
-          -u "emmarodg:${{ secrets.DA_PASSWORD }}" \
-          -H "Content-Type: application/json" \
-          -d '{}'
+          server: da16.host-ww.net
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: domains/://emmarodgerspomeranian.com
+          dangerous-clean-slate: false
