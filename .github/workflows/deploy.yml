@@ -1,36 +1,17 @@
-name: Deploy Next.js to DomainKing
+name: Trigger Dmainking Deploy
 
 on:
   push:
     branches:
-      - main  # Triggers automatically as soon as your PR merges into main
+      - main
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build Next.js Static Site
-        # NEXT_FONT_GOOGLE_MOCK_FETCH=true ensures Google Fonts don't throw network errors during the GitHub build environment
-        run: NEXT_FONT_GOOGLE_MOCK_FETCH=true npm run build
-
-      - name: Sync Files to DomainKing via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/ 
-          server-dir: domains/://emmarodgerspomeranian.com
+      - name: Trigger DirectAdmin Git Pull
+        run: |
+          curl -X POST "https://host-ww.net" \
+          -u "emmarodg:${{ secrets.DA_PASSWORD }}" \
+          -H "Content-Type: application/json" \
+          -d '{}'
