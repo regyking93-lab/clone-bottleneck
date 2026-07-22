@@ -15,11 +15,11 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#FAF7F2",
+          background: "#FDEEF3",
           borderRadius: 8,
           fontSize: 20,
           fontWeight: 700,
-          color: "#C9A962",
+          color: "#D9678F",
         }}
       >
         E

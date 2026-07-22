@@ -15,6 +15,18 @@ export const media = {
         src: "/media/trust/delivery/f913a8f5-cd9d-4257-bc4e-efd976ef7777.JPG",
         alt: "Pomeranian puppy handoff confirmation photo with new family at Emma's Rodgers Pomeranians",
       },
+      {
+        src: "/media/updates/WhatsApp%20Image%202026-07-11%20at%206.44.33%20PM.jpeg",
+        alt: "Happy family portrait with their adult Pomeranians from Emma's Rodgers Pomeranians",
+      },
+      {
+        src: "/media/updates/WhatsApp%20Image%202026-07-11%20at%206.44.35%20PM.jpeg",
+        alt: "Sleepy Pomeranian puppy riding home safely after delivery",
+      },
+      {
+        src: "/media/updates/WhatsApp%20Image%202026-07-11%20at%206.44.37%20PM.jpeg",
+        alt: "New owners cuddling their Pomeranian puppy at home after placement",
+      },
     ],
     videos: [
       {
@@ -77,6 +89,9 @@ export const media = {
       { src: "/media/pops/WhatsApp%20Image%202026-05-26%20at%2012.24.25%20PM%20(1).jpeg", alt: "Pomeranian puppy in loving home environment",  label: null },
       { src: "/media/pops/WhatsApp%20Image%202026-05-26%20at%2012.26.35%20PM.jpeg",       alt: "Tiny Pomeranian puppy calm and cosy",          label: null },
       { src: "/media/pops/WhatsApp%20Image%202026-05-26%20at%2012.26.36%20PM.jpeg",       alt: "Fluffy Pomeranian pup ready for cuddles",      label: null },
+      { src: "/media/updates/WhatsApp%20Image%202026-07-11%20at%206.44.31%20PM.jpeg",     alt: "Adult Pomeranians relaxing together at Emma's Rodgers Pomeranians' home", label: "Meet the family 🐾" },
+      { src: "/media/updates/WhatsApp%20Image%202026-07-11%20at%206.44.34%20PM.jpeg",     alt: "Pomeranian puppy resting on its new owner's shoulder",  label: "Shoulder naps" },
+      { src: "/media/updates/WhatsApp%20Image%202026-07-11%20at%206.44.36%20PM.jpeg",     alt: "Family of Pomeranians cuddled up together at home",     label: "One big fluffy family" },
     ],
     videos: [
       { src: "/media/new-photos/wp-video-01.mp4",                           alt: "Pomeranian puppy playtime at home" },

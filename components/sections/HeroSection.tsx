@@ -22,7 +22,7 @@ export function HeroSection() {
         {/* Warm gradient blended over the image */}
         <div className="absolute inset-0 bg-gradient-to-br from-cream/80 via-blush/20 to-blush/40" />
         {/* Soft gold radial glow behind the text column */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_15%_55%,rgba(201,169,98,0.12)_0%,transparent_65%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_70%_at_15%_55%,rgba(217,103,143,0.12)_0%,transparent_65%)]" />
       </div>
 
       {/* Content */}
@@ -38,7 +38,7 @@ export function HeroSection() {
             <span>Emma&apos;s Rodgers Pomeranians</span>
           </p>
           <h1 className="font-heading break-words text-4xl leading-tight font-semibold md:text-5xl lg:text-[3.25rem]">
-            <span className="text-charcoal/90" style={{ textShadow: "0 1px 18px rgba(232,196,196,0.45)" }}>Little Faces.</span>
+            <span className="text-charcoal/90" style={{ textShadow: "0 1px 18px rgba(244,184,210,0.45)" }}>Little Faces.</span>
             <br />
             <span className="text-gold">Big Hearts.</span>
           </h1>

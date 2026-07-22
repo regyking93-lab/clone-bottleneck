@@ -16,9 +16,9 @@ export function ShimmerImage({ onLoad, ...props }: ImageProps) {
   return (
     <>
       {!loaded && (
-        <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#ede8e0]" aria-hidden>
-          <div className="relative h-1 w-3/5 overflow-hidden rounded-full bg-[#d9d0c4]">
-            <span className="loading-bar bg-[#c9a962]" />
+        <div className="absolute inset-0 z-10 flex items-center justify-center bg-beige" aria-hidden>
+          <div className="relative h-1 w-3/5 overflow-hidden rounded-full bg-blush/50">
+            <span className="loading-bar bg-gold" />
           </div>
         </div>
       )}
