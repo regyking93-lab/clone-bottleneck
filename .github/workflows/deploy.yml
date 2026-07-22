@@ -36,7 +36,7 @@ jobs:
 
       - name: Trigger DirectAdmin Git Pull
         run: |
-          curl -X POST "https://da16.host-ww.net:2222/api/git/user/emmarodg/uuid/ad014b6a5dbfbe35db4314fe12da5425/webhook" \
+          curl -X POST "https://da16.host-ww.net:2222/api/git/user/emmarodg/uuid/512bca2fe42f2df19e063b7636eaa602/webhook" \
           -u "emmarodg:${{ secrets.DA_PASSWORD }}" \
           -H "Content-Type: application/json" \
           -d '{}'
