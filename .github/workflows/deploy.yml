@@ -34,10 +34,9 @@ jobs:
           branch: gh-deploy      
           clean: true            
 
-            - name: Trigger DirectAdmin Git Pull
+      - name: Trigger DirectAdmin Git Pull
         run: |
           curl -X POST "https://da16.host-ww.net:2222/api/git/user/emmarodg/uuid/462c6cc7ea35a52960dc8dd8d0831d1a/webhook" \
           -u "emmarodg:${{ secrets.DA_PASSWORD }}" \
           -H "Content-Type: application/json" \
           -d '{}'
-
