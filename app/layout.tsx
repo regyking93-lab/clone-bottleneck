@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description,
     images: [
       {
-        url: "/media/first/WhatsApp%20Image%202026-07-22%20at%202.50.06%20PM.jpeg",
+        url: "/media/first/opengraph-image.jpeg",
         width: 606,
         height: 1080,
         alt: siteName,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteName,
     description,
-    images: ["/media/first/WhatsApp%20Image%202026-07-22%20at%202.50.06%20PM.jpeg"],
+    images: ["/media/first/opengraph-image.jpeg"],
   },
   robots: { index: true, follow: true },
 };
