@@ -24,11 +24,12 @@ jobs:
       - name: Compile NextJS Static Output
         run: npm run build
 
-      - name: Push Static Files to Web Root
-        uses: loki-e/ftp-deploy@v1
+      - name: Upload Files directly to public_html via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: da16.host-ww.net
-          user: ${{ secrets.FTP_USERNAME }}
+          server: da16.host-ww.net
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local: ./out/
-          remote: /domains/://emmarodgerspomeranian.com
+          local-dir: ./out/
+          server-dir: domains/://emmarodgerspomeranian.com
+          dangerous-clean-slate: false
