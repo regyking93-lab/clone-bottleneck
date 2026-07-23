@@ -44,13 +44,20 @@ export const metadata: Metadata = {
     siteName,
     title: siteName,
     description,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: siteName }],
+    images: [
+      {
+        url: "/media/first/WhatsApp%20Image%202026-07-22%20at%202.50.06%20PM.jpeg",
+        width: 606,
+        height: 1080,
+        alt: siteName,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: siteName,
     description,
-    images: ["/opengraph-image"],
+    images: ["/media/first/WhatsApp%20Image%202026-07-22%20at%202.50.06%20PM.jpeg"],
   },
   robots: { index: true, follow: true },
 };
